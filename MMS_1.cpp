@@ -12,52 +12,51 @@ template <typename T>inline void read(T& n){
 }
 class Material{
 public:
-    string place,id,date;       //´æ·ÅµØµã ÎïÆ·±àºÅ ²É¹ºÈÕÆÚ
-    int num,price;              //ÊıÁ¿ ¼Û¸ñ
+    int num,price;              //æ•°é‡ ä»·æ ¼
+    string place,id,date;       //å­˜æ”¾åœ°ç‚¹ ç‰©å“ç¼–å· é‡‡è´­æ—¥æœŸ
     Material(int _num=0,int _price=0,string _place="",string _id="",string _date=""):num(_num),price(_price),place(_place),id(_id),date(_date){}
-    virtual string getType()=0; //´¿Ğéº¯Êı»ñÈ¡ÀàĞÍ
-    virtual string getId()=0;   //´¿Ğéº¯Êı»ñÈ¡±àºÅ
-    virtual string getPlace()=0;//´¿Ğéº¯Êı»ñÈ¡´æ·ÅµØµã
-    virtual string getDate()=0; //´¿Ğéº¯Êı»ñÈ¡²É¹ºÈÕÆÚ
-    virtual int getNum()=0;     //´¿Ğéº¯Êı»ñÈ¡ÊıÁ¿
-    virtual int getPrice()=0;   //´¿Ğéº¯Êı»ñÈ¡¼Û¸ñ
+    virtual string getType()=0; //çº¯è™šå‡½æ•°è·å–ç±»å‹
+    virtual string getId()=0;   //çº¯è™šå‡½æ•°è·å–ç¼–å·
+    virtual string getPlace()=0;//çº¯è™šå‡½æ•°è·å–å­˜æ”¾åœ°ç‚¹
+    virtual string getDate()=0; //çº¯è™šå‡½æ•°è·å–é‡‡è´­æ—¥æœŸ
+    virtual int getNum()=0;     //çº¯è™šå‡½æ•°è·å–æ•°é‡
+    virtual int getPrice()=0;   //çº¯è™šå‡½æ•°è·å–ä»·æ ¼
 };
 class Cameras:public Material{
 public:
-    int exposure,gain,res,fps;  //ÆØ¹â ÔöÒæ ·Ö±æÂÊ Ö¡ÂÊ
+    int exposure,gain,res,fps;  //æ›å…‰ å¢ç›Š åˆ†è¾¨ç‡ å¸§ç‡
     Cameras(int _num=0,int _price=0,string _place="",string _id="",string _date="",int _exposure=0,int _gain=0,int _res=0,int _fps=0):
         Material(_num,_price,_place,_id,_date),exposure(_exposure),gain(_gain),res(_res),fps(_fps){}
-    string getType(){    //ÖØĞ´»ñÈ¡ÀàĞÍº¯Êı
-        return "Ïà»ú";
+    string getType(){    //é‡å†™è·å–ç±»å‹å‡½æ•°
+        return "ç›¸æœº";
     }
-    string getId(){     //ÖØĞ´»ñÈ¡±àºÅº¯Êı
+    string getId(){     //é‡å†™è·å–ç¼–å·å‡½æ•°
         return id;
     }
-    string getPlace(){  //ÖØĞ´»ñÈ¡´æ·ÅµØµãº¯Êı
+    string getPlace(){  //é‡å†™è·å–å­˜æ”¾åœ°ç‚¹å‡½æ•°
         return place;
     }
-    string getDate(){   //ÖØĞ´»ñÈ¡²É¹ºÈÕÆÚº¯Êı
+    string getDate(){   //é‡å†™è·å–é‡‡è´­æ—¥æœŸå‡½æ•°
         return date;
     }
-    int getNum(){       //ÖØĞ´»ñÈ¡ÊıÁ¿º¯Êı
+    int getNum(){       //é‡å†™è·å–æ•°é‡å‡½æ•°
         return num;
     }
-    int getPrice(){     //ÖØĞ´»ñÈ¡¼Û¸ñº¯Êı
+    int getPrice(){     //é‡å†™è·å–ä»·æ ¼å‡½æ•°
         return price;
     }
-    int getRes(){       //»ñÈ¡·Ö±æÂÊº¯Êı
+    int getRes(){       //è·å–åˆ†è¾¨ç‡å‡½æ•°
         return res;
     }
-    int getFps(){       //»ñÈ¡Ö¡ÂÊº¯Êı
+    int getFps(){       //è·å–å¸§ç‡å‡½æ•°
         return fps;
     }
-    int getExposure(){ //»ñÈ¡ÆØ¹âº¯Êı
+    int getExposure(){ //è·å–æ›å…‰å‡½æ•°
         return exposure;
     }
-    int getGain(){     //»ñÈ¡ÔöÒæº¯Êı
+    int getGain(){     //è·å–å¢ç›Šå‡½æ•°
         return gain;
     }
-
 
 };
 class computer:public Material{
@@ -65,196 +64,277 @@ public:
     string CPU,GPU;    //CPU GPU
     computer(int _num=0,int _price=0,string _place="",string _id="",string _date="",string _CPU="",string _GPU=""):
         Material(_num,_price,_place,_id,_date),CPU(_CPU),GPU(_GPU){}
-    string getType(){   //ÖØĞ´»ñÈ¡ÀàĞÍº¯Êı
-        return "Ğ¡µçÄÔ";
+    string getType(){   //é‡å†™è·å–ç±»å‹å‡½æ•°
+        return "å°ç”µè„‘";
     }
-    string getId(){     //ÖØĞ´»ñÈ¡±àºÅº¯Êı
+    string getId(){     //é‡å†™è·å–ç¼–å·å‡½æ•°
         return id;
     }
-    string getPlace(){  //ÖØĞ´»ñÈ¡´æ·ÅµØµãº¯Êı
+    string getPlace(){  //é‡å†™è·å–å­˜æ”¾åœ°ç‚¹å‡½æ•°
         return place;
     }
-    string getDate(){   //ÖØĞ´»ñÈ¡²É¹ºÈÕÆÚº¯Êı
+    string getDate(){   //é‡å†™è·å–é‡‡è´­æ—¥æœŸå‡½æ•°
         return date;
     }
-    int getNum(){       //ÖØĞ´»ñÈ¡ÊıÁ¿º¯Êı
+    int getNum(){       //é‡å†™è·å–æ•°é‡å‡½æ•°
         return num;
     }
-    int getPrice(){     //ÖØĞ´»ñÈ¡¼Û¸ñº¯Êı
+    int getPrice(){     //é‡å†™è·å–ä»·æ ¼å‡½æ•°
         return price;
     }
-    string getCPU(){    //»ñÈ¡CPUº¯Êı
+    string getCPU(){    //è·å–CPUå‡½æ•°
         return CPU;
     }
-    string getGPU(){    //»ñÈ¡GPUº¯Êı
+    string getGPU(){    //è·å–GPUå‡½æ•°
         return GPU;
     }
 };
 class lidar:public Material{
 public:
-    double range,resolution; //²â¾à·¶Î§ ·Ö±æÂÊ
+    double range,resolution; //æµ‹è·èŒƒå›´ åˆ†è¾¨ç‡
     lidar(int _num=0,int _price=0,string _place="",string _id="",string _date="",double _range=0,double _resolution=0):
         Material(_num,_price,_place,_id,_date),range(_range),resolution(_resolution){}
-    string getType(){   //ÖØĞ´»ñÈ¡ÀàĞÍº¯Êı
-        return "¼¤¹âÀ×´ï";
+    string getType(){   //é‡å†™è·å–ç±»å‹å‡½æ•°
+        return "æ¿€å…‰é›·è¾¾";
     }
-    string getId(){     //ÖØĞ´»ñÈ¡±àºÅº¯Êı
+    string getId(){     //é‡å†™è·å–ç¼–å·å‡½æ•°
         return id;
     }
-    string getPlace(){  //ÖØĞ´»ñÈ¡´æ·ÅµØµãº¯Êı
+    string getPlace(){  //é‡å†™è·å–å­˜æ”¾åœ°ç‚¹å‡½æ•°
         return place;
     }
-    string getDate(){   //ÖØĞ´»ñÈ¡²É¹ºÈÕÆÚº¯Êı
+    string getDate(){   //é‡å†™è·å–é‡‡è´­æ—¥æœŸå‡½æ•°
         return date;
     }
-    int getNum(){       //ÖØĞ´»ñÈ¡ÊıÁ¿º¯Êı
+    int getNum(){       //é‡å†™è·å–æ•°é‡å‡½æ•°
         return num;
     }
-    int getPrice(){     //ÖØĞ´»ñÈ¡¼Û¸ñº¯Êı
+    int getPrice(){     //é‡å†™è·å–ä»·æ ¼å‡½æ•°
         return price;
     }
-    double getRange(){      //»ñÈ¡²â¾à·¶Î§º¯Êı
+    double getRange(){      //è·å–æµ‹è·èŒƒå›´å‡½æ•°
         return range;
     }
-    double getResolution(){ //»ñÈ¡·Ö±æÂÊº¯Êı
+    double getResolution(){ //è·å–åˆ†è¾¨ç‡å‡½æ•°
         return resolution;
     }
 };
 class Lens:public Material{
 public:
-    int focal,len;      //½¹¾à ³¤¶È
+    int focal,len;      //ç„¦è· é•¿åº¦
     Lens(int _num=0,int _price=0,string _place="",string _id="",string _date="",int _focal=0,int _len=0):
         Material(_num,_price,_place,_id,_date),focal(_focal),len(_len){}
-    string getType(){   //ÖØĞ´»ñÈ¡ÀàĞÍº¯Êı
-        return "¾µÍ·";
+    string getType(){   //é‡å†™è·å–ç±»å‹å‡½æ•°
+        return "é•œå¤´";
     }
-    string getId(){     //ÖØĞ´»ñÈ¡±àºÅº¯Êı
+    string getId(){     //é‡å†™è·å–ç¼–å·å‡½æ•°
         return id;
     }
-    string getPlace(){  //ÖØĞ´»ñÈ¡´æ·ÅµØµãº¯Êı
+    string getPlace(){  //é‡å†™è·å–å­˜æ”¾åœ°ç‚¹å‡½æ•°
         return place;
     }
-    string getDate(){   //ÖØĞ´»ñÈ¡²É¹ºÈÕÆÚº¯Êı
+    string getDate(){   //é‡å†™è·å–é‡‡è´­æ—¥æœŸå‡½æ•°
         return date;
     }
-    int getNum(){       //ÖØĞ´»ñÈ¡ÊıÁ¿º¯Êı
+    int getNum(){       //é‡å†™è·å–æ•°é‡å‡½æ•°
         return num;
     }
-    int getPrice(){     //ÖØĞ´»ñÈ¡¼Û¸ñº¯Êı
+    int getPrice(){     //é‡å†™è·å–ä»·æ ¼å‡½æ•°
         return price;
     }
-    int getFocal(){     //»ñÈ¡½¹¾àº¯Êı
+    int getFocal(){     //è·å–ç„¦è·å‡½æ•°
         return focal;
     }
-    int getLen(){       //»ñÈ¡³¤¶Èº¯Êı
+    int getLen(){       //è·å–é•¿åº¦å‡½æ•°
         return len;
     }
 };
 class System{
 private:
-    vector<Material*> mater; //´æ·ÅÎï×ÊµÄÖ¸ÕëÊı×é
+    vector<Material*> mater; //å­˜æ”¾ç‰©èµ„çš„æŒ‡é’ˆæ•°ç»„
     int T;
 public:
     void Insert(){
-        printf("Ñ¡Ôñ´æÈëÎïÆ·µÄÖÖÀà\n");
-        printf("ÊäÈë 0 ·µ»ØÉÏÒ»²½\n");
-        printf("ÊäÈë 1 Ïà»ú\n");
-        printf("ÊäÈë 2 Ğ¡µçÄÔ\n");
-        printf("ÊäÈë 3 ¼¤¹âÀ×´ï\n");
-        printf("ÊäÈë 4 ¾µÍ·\n");
+        printf("é€‰æ‹©å­˜å…¥ç‰©å“çš„ç§ç±»\n");
+        printf("è¾“å…¥ 0 è¿”å›ä¸Šä¸€æ­¥\n");
+        printf("è¾“å…¥ 1 ç›¸æœº\n");
+        printf("è¾“å…¥ 2 å°ç”µè„‘\n");
+        printf("è¾“å…¥ 3 æ¿€å…‰é›·è¾¾\n");
+        printf("è¾“å…¥ 4 é•œå¤´\n");
         printf("------------------------\n");
         read(T);
         if(T==0) return;
         else if(T==1){
             Cameras cam;
-            printf("ÇëÊäÈëÏà»úµÄÏà¹ØĞÅÏ¢\n");
-            printf("´æ·ÅµØµã:\n");cin>>cam.place;
-            printf("ÎïÆ·±àºÅ:\n");cin>>cam.id;
-            printf("²É¹ºÈÕÆÚ:\n");cin>>cam.date;
-            printf("ÊıÁ¿:\n");read(cam.num);
-            printf("¼Û¸ñ:\n");read(cam.price);
-            printf("ÆØ¹â:\n");read(cam.exposure);
-            printf("ÔöÒæ:\n");read(cam.gain);
-            printf("·Ö±æÂÊ:\n");read(cam.res);
-            printf("Ö¡ÂÊ:\n");read(cam.fps);
-            printf("ĞÅÏ¢Â¼Èë³É¹¦\n");
+            printf("è¯·è¾“å…¥ç›¸æœºçš„ç›¸å…³ä¿¡æ¯\n");
+            printf("å­˜æ”¾åœ°ç‚¹:\n");getline(cin,cam.place);
+            printf("ç‰©å“ç¼–å·:\n");getline(cin,cam.id);
+            printf("é‡‡è´­æ—¥æœŸ:\n");getline(cin,cam.date);
+            printf("æ•°é‡:\n");read(cam.num);
+            printf("ä»·æ ¼:\n");read(cam.price);
+            printf("æ›å…‰:\n");read(cam.exposure);
+            printf("å¢ç›Š:\n");read(cam.gain);
+            printf("åˆ†è¾¨ç‡:\n");read(cam.res);
+            printf("å¸§ç‡:\n");read(cam.fps);
+            printf("ä¿¡æ¯å½•å…¥æˆåŠŸ\n");
             mater.push_back(new Cameras(cam.num,cam.price,cam.place,cam.id,cam.date,cam.exposure,cam.gain,cam.res,cam.fps));
         }
         else if(T==2){
             computer comp;
-            printf("ÇëÊäÈëĞ¡µçÄÔµÄÏà¹ØĞÅÏ¢\n");
-            printf("´æ·ÅµØµã:\n");cin>>comp.place;
-            printf("ÎïÆ·±àºÅ:\n");cin>>comp.id;
-            printf("²É¹ºÈÕÆÚ:\n");cin>>comp.date;
-            printf("ÊıÁ¿:\n");read(comp.num);
-            printf("¼Û¸ñ:\n");read(comp.price);
-            printf("CPU:\n");cin>>comp.CPU;
-            printf("GPU:\n");cin>>comp.GPU;
-            printf("ĞÅÏ¢Â¼Èë³É¹¦\n");
+            printf("è¯·è¾“å…¥å°ç”µè„‘çš„ç›¸å…³ä¿¡æ¯\n");
+            printf("å­˜æ”¾åœ°ç‚¹:\n");getline(cin,comp.place);
+            printf("ç‰©å“ç¼–å·:\n");getline(cin,comp.id);
+            printf("é‡‡è´­æ—¥æœŸ:\n");getline(cin,comp.date);
+            printf("æ•°é‡:\n");read(comp.num);
+            printf("ä»·æ ¼:\n");read(comp.price);
+            printf("CPU:\n");getline(cin,comp.CPU);
+            printf("GPU:\n");getline(cin,comp.GPU);
+            printf("ä¿¡æ¯å½•å…¥æˆåŠŸ\n");
             mater.push_back(new computer(comp.num,comp.price,comp.place,comp.id,comp.date,comp.CPU,comp.GPU));
         }
         else if(T==3){
             lidar lid;
-            printf("ÇëÊäÈë¼¤¹âÀ×´ïµÄÏà¹ØĞÅÏ¢\n");
-            printf("´æ·ÅµØµã:\n");cin>>lid.place;
-            printf("ÎïÆ·±àºÅ:\n");cin>>lid.id;
-            printf("²É¹ºÈÕÆÚ:\n");cin>>lid.date;
-            printf("ÊıÁ¿:\n");read(lid.num);
-            printf("¼Û¸ñ:\n");read(lid.price);
-            printf("²â¾à·¶Î§:\n");cin>>lid.range;
-            printf("·Ö±æÂÊ:\n");cin>>lid.resolution;
-            printf("ĞÅÏ¢Â¼Èë³É¹¦\n");
+            printf("è¯·è¾“å…¥æ¿€å…‰é›·è¾¾çš„ç›¸å…³ä¿¡æ¯\n");
+            printf("å­˜æ”¾åœ°ç‚¹:\n");getline(cin,lid.place);
+            printf("ç‰©å“ç¼–å·:\n");getline(cin,lid.id);
+            printf("é‡‡è´­æ—¥æœŸ:\n");getline(cin,lid.date);
+            printf("æ•°é‡:\n");read(lid.num);
+            printf("ä»·æ ¼:\n");read(lid.price);
+            printf("æµ‹è·èŒƒå›´:\n");cin>>lid.range;
+            printf("åˆ†è¾¨ç‡:\n");cin>>lid.resolution;
+            printf("ä¿¡æ¯å½•å…¥æˆåŠŸ\n");
             mater.push_back(new lidar(lid.num,lid.price,lid.place,lid.id,lid.date,lid.range,lid.resolution));
         }
         else if(T==4){
             Lens len;
-            printf("ÇëÊäÈë¾µÍ·µÄÏà¹ØĞÅÏ¢\n");
-            printf("´æ·ÅµØµã:\n");cin>>len.place;
-            printf("ÎïÆ·±àºÅ:\n");cin>>len.id;
-            printf("²É¹ºÈÕÆÚ:\n");cin>>len.date;
-            printf("ÊıÁ¿:\n");read(len.num);
-            printf("¼Û¸ñ:\n");read(len.price);
-            printf("½¹¾à:\n");read(len.focal);
-            printf("³¤¶È:\n");read(len.len);
-            printf("ĞÅÏ¢Â¼Èë³É¹¦\n");
+            printf("è¯·è¾“å…¥é•œå¤´çš„ç›¸å…³ä¿¡æ¯\n");
+            printf("å­˜æ”¾åœ°ç‚¹:\n");getline(cin,len.place);
+            printf("ç‰©å“ç¼–å·:\n");getline(cin,len.id);
+            printf("é‡‡è´­æ—¥æœŸ:\n");getline(cin,len.date);
+            printf("æ•°é‡:\n");read(len.num);
+            printf("ä»·æ ¼:\n");read(len.price);
+            printf("ç„¦è·:\n");read(len.focal);
+            printf("é•¿åº¦:\n");read(len.len);
+            printf("ä¿¡æ¯å½•å…¥æˆåŠŸ\n");
             mater.push_back(new Lens(len.num,len.price,len.place,len.id,len.date,len.focal,len.len));
         }
         else {
-            printf("Ö¸ÁîÊäÈë´íÎó,ÇëÖØĞÂÊäÈë\n");
+            printf("æŒ‡ä»¤è¾“å…¥é”™è¯¯,è¯·é‡æ–°è¾“å…¥\n");
         }
         
         printf("------------------------\n");
         Insert();
     }
     void Find(){
-
+        printf("è¾“å…¥ 0 è¿”å›ä¸Šä¸€æ­¥\n");
+        printf("è¾“å…¥éœ€è¦æŸ¥è¯¢çš„ç‰©èµ„ç¼–å·:\n");
+        string id;cin>>id;
+        if(id=="0"){
+            printf("------------------------\n");
+            return;
+        }
+        bool flag=false;
+        for(const auto &it:mater)
+            if(it->getId()==id){
+                flag=true;
+                printf("ç‰©èµ„ç±»å‹:%s\n",it->getType().c_str());
+                printf("å­˜æ”¾åœ°ç‚¹:%s\n",it->getPlace().c_str());
+                printf("ç‰©å“ç¼–å·:%s\n",it->getId().c_str());
+                printf("é‡‡è´­æ—¥æœŸ:%s\n",it->getDate().c_str());
+                printf("æ•°é‡:%d\n",it->getNum());
+                printf("ä»·æ ¼:%d\n",it->getPrice());
+                if(it->getType()=="ç›¸æœº"){
+                    Cameras* cam=dynamic_cast<Cameras*>(it);
+                    printf("æ›å…‰:%d\n",cam->getExposure());
+                    printf("å¢ç›Š:%d\n",cam->getGain());
+                    printf("åˆ†è¾¨ç‡:%d\n",cam->getRes());
+                    printf("å¸§ç‡:%d\n",cam->getFps());
+                }
+                else if(it->getType()=="å°ç”µè„‘"){
+                    computer* comp=dynamic_cast<computer*>(it);
+                    printf("CPU:%s\n",comp->getCPU().c_str());
+                    printf("GPU:%s\n",comp->getGPU().c_str());
+                }
+                else if(it->getType()=="æ¿€å…‰é›·è¾¾"){
+                    lidar* lid=dynamic_cast<lidar*>(it);
+                    printf("æµ‹è·èŒƒå›´:%.2f\n",lid->getRange());
+                    printf("åˆ†è¾¨ç‡:%.2f\n",lid->getResolution());
+                }
+                else if(it->getType()=="é•œå¤´"){
+                    Lens* len=dynamic_cast<Lens*>(it);
+                    printf("ç„¦è·:%d\n",len->getFocal());
+                    printf("é•¿åº¦:%d\n",len->getLen());
+                }
+                printf("------------------------\n");
+            }
+        if(!flag) printf("æœªæ‰¾åˆ°è¯¥ç‰©èµ„ä¿¡æ¯\n------------------------\n");
+        Find();
     }
     void Revise(){
-
+        printf("è¾“å…¥ 0 è¿”å›ä¸Šä¸€æ­¥\n");
+        printf("è¾“å…¥éœ€è¦ä¿®æ”¹çš„ç‰©èµ„ç¼–å·:\n");
+        string id;
+        bool flag=false;
+        cin>>id;
+        if(id=="0"){
+            printf("------------------------\n");
+            return;
+        }
+        for(auto &it:mater)
+            if(it->getId()==id){
+                flag=true;
+                printf("è¯·è¾“å…¥ä¿®æ”¹åçš„æ•°é‡:\n");
+                read(it->num);
+                if(it->num<0){
+                    printf("æ•°é‡ä¸èƒ½ä¸ºè´Ÿæ•°,ä¿®æ”¹å¤±è´¥\n------------------------\n");
+                    Revise();
+                    return;
+                }
+                else if(it->num==0){
+                    printf("æ•°é‡ä¸ºé›¶,è¯¥ç‰©èµ„ä¿¡æ¯å·²åˆ é™¤\n------------------------\n");
+                    mater.erase(remove(mater.begin(),mater.end(),it),mater.end());
+                    Revise();
+                    return;
+                }
+                printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å­˜æ”¾åœ°ç‚¹:\n");
+                cin>>it->place;
+                printf("ä¿¡æ¯ä¿®æ”¹æˆåŠŸ\n------------------------\n");
+            }
+        if(!flag) printf("æœªæ‰¾åˆ°è¯¥ç‰©èµ„ä¿¡æ¯\n------------------------\n");
+        Revise();
     }
 }MMS;
 const int N=2e5+10;
 signed main(void){
 //  freopen(".in","r",stdin);
 //  freopen(".out","w",stdout);
-    printf("»¶Ó­Ê¹ÓÃ MMS ÏµÍ³\n");
+    printf("æ¬¢è¿ä½¿ç”¨ MMS ç³»ç»Ÿ\n");
     printf("------------------------\n");
     int T=0;
     while(true){
-        printf("ÊäÈë 0 ÍË³öÏµÍ³\n");
-        printf("ÊäÈë 1 Ğ´ÈëĞÅÏ¢\n");
-        printf("ÊäÈë 2 ²éÕÒÎï×Ê\n");
-        printf("ÊäÈë 3 ĞŞ¸ÄĞÅÏ¢\n");
+        printf("è¾“å…¥ 0 é€€å‡ºç³»ç»Ÿ\n");
+        printf("è¾“å…¥ 1 å†™å…¥ä¿¡æ¯\n");
+        printf("è¾“å…¥ 2 æŸ¥æ‰¾ç‰©èµ„\n");
+        printf("è¾“å…¥ 3 ä¿®æ”¹ä¿¡æ¯\n");
         printf("------------------------\n");
         read(T);
         if(T==0) break;
         else if(T==1) MMS.Insert();
         else if(T==2) MMS.Find();
         else if(T==3) MMS.Revise();
-        else printf("Ö¸ÁîÊäÈë´íÎó,ÇëÖØĞÂÊäÈë\n");
+        else printf("æŒ‡ä»¤è¾“å…¥é”™è¯¯,è¯·é‡æ–°è¾“å…¥\n");
     }
     return 0;
 }
 /*
-
+sample input:
+1
+2
+511A
+C001
+2025/10/18
+1
+8999
+intel Ultra9 285HX
+NVIDIA RTX 5060
 */
