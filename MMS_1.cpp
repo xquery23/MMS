@@ -153,10 +153,78 @@ public:
 class System{
 private:
     vector<Material*> mater; //存放物资的指针数组
+    int T;
 public:
-    
     void Insert(){
-
+        printf("选择存入物品的种类\n");
+        printf("输入 0 返回上一步\n");
+        printf("输入 1 相机\n");
+        printf("输入 2 小电脑\n");
+        printf("输入 3 激光雷达\n");
+        printf("输入 4 镜头\n");
+        printf("------------------------\n");
+        read(T);
+        if(T==0) return;
+        else if(T==1){
+            Cameras cam;
+            printf("请输入相机的相关信息\n");
+            printf("存放地点:\n");cin>>cam.place;
+            printf("物品编号:\n");cin>>cam.id;
+            printf("采购日期:\n");cin>>cam.date;
+            printf("数量:\n");read(cam.num);
+            printf("价格:\n");read(cam.price);
+            printf("曝光:\n");read(cam.exposure);
+            printf("增益:\n");read(cam.gain);
+            printf("分辨率:\n");read(cam.res);
+            printf("帧率:\n");read(cam.fps);
+            printf("信息录入成功\n");
+            mater.push_back(new Cameras(cam.num,cam.price,cam.place,cam.id,cam.date,cam.exposure,cam.gain,cam.res,cam.fps));
+        }
+        else if(T==2){
+            computer comp;
+            printf("请输入小电脑的相关信息\n");
+            printf("存放地点:\n");cin>>comp.place;
+            printf("物品编号:\n");cin>>comp.id;
+            printf("采购日期:\n");cin>>comp.date;
+            printf("数量:\n");read(comp.num);
+            printf("价格:\n");read(comp.price);
+            printf("CPU:\n");cin>>comp.CPU;
+            printf("GPU:\n");cin>>comp.GPU;
+            printf("信息录入成功\n");
+            mater.push_back(new computer(comp.num,comp.price,comp.place,comp.id,comp.date,comp.CPU,comp.GPU));
+        }
+        else if(T==3){
+            lidar lid;
+            printf("请输入激光雷达的相关信息\n");
+            printf("存放地点:\n");cin>>lid.place;
+            printf("物品编号:\n");cin>>lid.id;
+            printf("采购日期:\n");cin>>lid.date;
+            printf("数量:\n");read(lid.num);
+            printf("价格:\n");read(lid.price);
+            printf("测距范围:\n");cin>>lid.range;
+            printf("分辨率:\n");cin>>lid.resolution;
+            printf("信息录入成功\n");
+            mater.push_back(new lidar(lid.num,lid.price,lid.place,lid.id,lid.date,lid.range,lid.resolution));
+        }
+        else if(T==4){
+            Lens len;
+            printf("请输入镜头的相关信息\n");
+            printf("存放地点:\n");cin>>len.place;
+            printf("物品编号:\n");cin>>len.id;
+            printf("采购日期:\n");cin>>len.date;
+            printf("数量:\n");read(len.num);
+            printf("价格:\n");read(len.price);
+            printf("焦距:\n");read(len.focal);
+            printf("长度:\n");read(len.len);
+            printf("信息录入成功\n");
+            mater.push_back(new Lens(len.num,len.price,len.place,len.id,len.date,len.focal,len.len));
+        }
+        else {
+            printf("指令输入错误,请重新输入\n");
+        }
+        
+        printf("------------------------\n");
+        Insert();
     }
     void Find(){
 
@@ -166,12 +234,12 @@ public:
     }
 }MMS;
 const int N=2e5+10;
-int ans,n,T;
 signed main(void){
 //  freopen(".in","r",stdin);
 //  freopen(".out","w",stdout);
     printf("欢迎使用 MMS 系统\n");
     printf("------------------------\n");
+    int T=0;
     while(true){
         printf("输入 0 退出系统\n");
         printf("输入 1 写入信息\n");
@@ -182,7 +250,8 @@ signed main(void){
         if(T==0) break;
         else if(T==1) MMS.Insert();
         else if(T==2) MMS.Find();
-        else MMS.Revise();
+        else if(T==3) MMS.Revise();
+        else printf("指令输入错误,请重新输入\n");
     }
     return 0;
 }
